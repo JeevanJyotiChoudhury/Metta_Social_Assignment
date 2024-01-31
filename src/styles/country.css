@@ -73,15 +73,13 @@ button:hover {
 
 .pagination button {
   padding: 10px;
-  margin: 50px 5px 70px 5px;
+  margin: 5px;
   cursor: pointer;
   border: 1px solid #ccc;
   background-color: #547ed8;
   color: #ffffff;
   transition: background-color 0.3s, color 0.3s;
   border-radius: 5px;
-  height:40px;
-  width:40px;
   font-weight: bold;
 }
 
@@ -115,5 +113,39 @@ button:hover {
   .countries-grid {
     grid-template-columns: 1fr;
     width:100%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .pagination button {
+    padding: 8px;
+    margin: 4px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .pagination button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .pagination button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
   }
 }
