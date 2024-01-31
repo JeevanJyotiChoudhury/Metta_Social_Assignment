@@ -21,13 +21,13 @@ button:hover {
 
 .countries-grid {
   border-radius: 10px;
-  padding: 20px;
+  padding: 2%;
   background-color: #e3e3e3;
   width:90%;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 1rem;
 }
 .image-container {
   width: 100%;
@@ -42,7 +42,7 @@ button:hover {
 }
 .country-card {
   background-color: #f7f7f7;
-  padding: 20px;
+  padding: 2%;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease-in-out;
@@ -103,4 +103,17 @@ button:hover {
 
 .input-field::placeholder {
   color: #999;
+}
+@media only screen and (max-width: 768px) {
+  .countries-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width:100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .countries-grid {
+    grid-template-columns: 1fr;
+    width:100%;
+  }
 }
