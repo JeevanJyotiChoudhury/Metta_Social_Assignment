@@ -13,6 +13,7 @@ function debounce(func, delay) {
 }
 
 function Country() {
+  const [loading, setLoading] = useState(true);
   const [currency, setCurrency] = useState("");
   const [allCountries, setAllCountries] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
@@ -26,9 +27,12 @@ function Country() {
       const data = await response.json();
       setAllCountries(data);
       setSearchResult(data);
+      setLoading(false);
       setError(false);
     } catch (error) {
       console.error("Error fetching data:", error);
+      setError("Error fetching data");
+      setLoading(false);
     }
   };
 
@@ -50,6 +54,7 @@ function Country() {
     try {
       if (value === "") {
         setSearchResult(allCountries);
+        setError(null);
         return;
       }
 
@@ -62,8 +67,13 @@ function Country() {
         );
       });
 
-      setSearchResult(filteredCountries);
-      setError(false);
+      if (filteredCountries.length === 0) {
+        setSearchResult([]);
+        setError("No countries found with this currency code");
+      } else {
+        setSearchResult(filteredCountries);
+        setError(null);
+      }
     } catch (error) {
       console.error("Error searching countries:", error);
       setSearchResult([]);
@@ -89,10 +99,27 @@ function Country() {
           onChange={handleInputChange}
           className="input-field"
         />
+        {loading && (
+          <div>
+            <img
+              src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"
+              alt="Loading..."
+            />
+          </div>
+        )}
       </form>
 
       {error ? (
-        <div className="error-container">{error && <p>{error}</p>}</div>
+        <div className="error-container">
+          {error && (
+            <div>
+              <img
+                src="https://media1.tenor.com/m/unvXyxtdn3oAAAAC/no-result.gif"
+                alt="No countries found with this currency code"
+              />
+            </div>
+          )}
+        </div>
       ) : (
         <div className="countries-grid">
           {searchResult
