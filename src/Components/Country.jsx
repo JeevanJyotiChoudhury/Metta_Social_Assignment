@@ -102,7 +102,7 @@ function Country() {
         {loading && (
           <div>
             <img
-              src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"
+              src="https://media1.tenor.com/m/_dGu36t3VNEAAAAC/loading-buffering.gif"
               alt="Loading..."
             />
           </div>
